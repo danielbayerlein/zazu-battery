@@ -1,0 +1,45 @@
+{
+  "name": "zazu-battery",
+  "version": "1.0.0",
+  "description": "Zazu plugin to show information about your battery",
+  "main": "src/index.js",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --format=node_modules/eslint-formatter-pretty .",
+    "test": "npm run lint && jest",
+    "prepush": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielbayerlein/zazu-battery.git"
+  },
+  "keywords": [
+    "zazu",
+    "battery"
+  ],
+  "author": "Daniel Bayerlein",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danielbayerlein/zazu-battery/issues"
+  },
+  "homepage": "https://github.com/danielbayerlein/zazu-battery#readme",
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.2",
+    "eslint-formatter-pretty": "^1.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "husky": "^0.13.3",
+    "jest": "^19.0.2"
+  },
+  "jest": {
+    "bail": true,
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/src/*.js"
+    ]
+  },
+  "dependencies": {
+    "execa": "^0.6.3",
+    "plist": "^2.0.1"
+  }
+}
