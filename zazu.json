@@ -1,0 +1,16 @@
+{
+  "name": "zazu-battery",
+  "version": "1.0.0",
+  "description": "Displays information about your battery",
+  "blocks": {
+    "input": [
+      {
+        "id": "battery",
+        "type": "PrefixScript",
+        "prefix": "battery",
+        "script": "src/index.js",
+        "args": "None"
+      }
+    ]
+  }
+}
