@@ -7,6 +7,8 @@ describe('index.js', () => {
   beforeEach(() => {
     jest.mock('os');
     os = require('os');
+
+    jest.mock('../../src/battery-macos.js');
   });
 
   afterEach(() => {
@@ -32,7 +34,6 @@ describe('index.js', () => {
   describe('macOS', () => {
     beforeEach(() => {
       os.platform = jest.fn(() => 'darwin');
-      jest.mock('../../src/battery-macos.js');
       index = require('../../src/');
     });
 
