@@ -1,7 +1,23 @@
-module.exports = {
-  capacity: 89,
-  cycles: 54,
-  health: 84,
-  temperature: 30.7,
-  timeLeft: '0:47',
+/* eslint-disable class-methods-use-this */
+
+module.exports = class Battery {
+  getCycles() {
+    return 54;
+  }
+
+  getHealth() {
+    return 84;
+  }
+
+  getTemperature() {
+    return 30.7;
+  }
+
+  getCapacity() {
+    return 89;
+  }
+
+  getTimeLeft() {
+    return '0:47';
+  }
 };

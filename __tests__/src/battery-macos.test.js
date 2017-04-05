@@ -1,19 +1,34 @@
-/* eslint global-require: 0 */
+/* eslint-disable global-require */
 
 describe('battery-macos.js', () => {
-  jest.mock('execa');
-  const execa = require('execa');
-  execa.sync.mockImplementation(() => require('../../__mocks__/ioreg.js'));
+  let battery;
 
-  const battery = require('../../src/battery-macos.js');
+  beforeEach(() => {
+    jest.mock('execa');
+    const execa = require('execa');
+    execa.sync.mockImplementation(() => require('../../__mocks__/ioreg.js'));
 
-  test('returns an object with the expected structure', () => {
-    expect(battery).toEqual({
-      capacity: 89,
-      cycles: 54,
-      health: 84,
-      temperature: 30.7,
-      timeLeft: '0:47',
-    });
+    const Battery = require('../../src/battery-macos.js');
+    battery = new Battery();
+  });
+
+  test('returns the expected cycles', () => {
+    expect(battery.getCycles()).toBe(54);
+  });
+
+  test('returns the expected capacity', () => {
+    expect(battery.getCapacity()).toBe(89);
+  });
+
+  test('returns the expected health', () => {
+    expect(battery.getHealth()).toBe(84);
+  });
+
+  test('returns the expected temperature', () => {
+    expect(battery.getTemperature()).toBe(30.7);
+  });
+
+  test('returns the expected time left', () => {
+    expect(battery.getTimeLeft()).toBe('0:47');
   });
 });

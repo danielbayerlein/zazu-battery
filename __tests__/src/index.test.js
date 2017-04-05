@@ -1,4 +1,4 @@
-/* eslint global-require: 0 */
+/* eslint-disable global-require */
 
 describe('index.js', () => {
   let os;
