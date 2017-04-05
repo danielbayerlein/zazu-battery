@@ -5,6 +5,8 @@
 [![Build Status](https://travis-ci.org/danielbayerlein/zazu-battery.svg?branch=master)](https://travis-ci.org/danielbayerlein/zazu-battery)
 [![codecov](https://codecov.io/gh/danielbayerlein/zazu-battery/branch/master/graph/badge.svg)](https://codecov.io/gh/danielbayerlein/zazu-battery)
 
+![screenshot](./screenshot.png)
+
 ## License
 
 Copyright (c) 2017 Daniel Bayerlein. See [LICENSE](./LICENSE.md) for details.
