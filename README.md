@@ -5,7 +5,27 @@
 [![Build Status](https://travis-ci.org/danielbayerlein/zazu-battery.svg?branch=master)](https://travis-ci.org/danielbayerlein/zazu-battery)
 [![codecov](https://codecov.io/gh/danielbayerlein/zazu-battery/branch/master/graph/badge.svg)](https://codecov.io/gh/danielbayerlein/zazu-battery)
 
+## Usage
+
+To show information about your battery simply type `battery`.
+
 ![screenshot](./screenshot.png)
+
+## Install
+
+Add `danielbayerlein/zazu-battery` inside of `plugins` block of your `~/.zazurc.json` file.
+
+```json
+{
+  "plugins": [
+    "danielbayerlein/zazu-battery"
+  ]
+}
+```
+
+## Supported Operating Systems
+
+* macOS
 
 ## License
 
