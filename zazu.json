@@ -1,7 +1,7 @@
 {
   "name": "zazu-battery",
   "version": "1.0.0",
-  "description": "Displays information about your battery",
+  "description": "Shows information about your battery",
   "blocks": {
     "input": [
       {
