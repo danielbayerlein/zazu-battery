@@ -1,32 +1,101 @@
 describe('battery-macos.js', () => {
   let battery
+  let execa
 
   beforeEach(() => {
     jest.mock('execa')
-    const execa = require('execa')
-    execa.sync.mockImplementation(() => require('../../__mocks__/ioreg.js'))
-
-    const Battery = require('../../src/battery-macos.js')
-    battery = new Battery()
+    execa = require('execa')
   })
 
-  test('returns the expected cycles', () => {
-    expect(battery.getCycles()).toBe(54)
+  afterEach(() => {
+    jest.resetAllMocks()
+    jest.resetModules()
   })
 
-  test('returns the expected capacity', () => {
-    expect(battery.getCapacity()).toBe(89)
+  describe('when battery is used', () => {
+    beforeEach(() => {
+      execa.sync.mockImplementation(() => require('../../__mocks__/macos-battery-used.js'))
+
+      const Battery = require('../../src/battery-macos.js')
+      battery = new Battery()
+    })
+
+    test('returns the expected cycles', () => {
+      expect(battery.getCycles()).toBe(55)
+    })
+
+    test('returns the expected capacity', () => {
+      expect(battery.getCapacity()).toBe(52)
+    })
+
+    test('returns the expected health', () => {
+      expect(battery.getHealth()).toBe(87)
+    })
+
+    test('returns the expected temperature', () => {
+      expect(battery.getTemperature()).toBe(30.7)
+    })
+
+    test('returns the expected time left', () => {
+      expect(battery.getTimeLeft()).toBe('4:41')
+    })
   })
 
-  test('returns the expected health', () => {
-    expect(battery.getHealth()).toBe(84)
+  describe('when battery is charging', () => {
+    beforeEach(() => {
+      execa.sync.mockImplementation(() => require('../../__mocks__/macos-battery-charging.js'))
+
+      const Battery = require('../../src/battery-macos.js')
+      battery = new Battery()
+    })
+
+    test('returns the expected cycles', () => {
+      expect(battery.getCycles()).toBe(55)
+    })
+
+    test('returns the expected capacity', () => {
+      expect(battery.getCapacity()).toBe(52)
+    })
+
+    test('returns the expected health', () => {
+      expect(battery.getHealth()).toBe(86)
+    })
+
+    test('returns the expected temperature', () => {
+      expect(battery.getTemperature()).toBe(30.6)
+    })
+
+    test('returns the expected time left', () => {
+      expect(battery.getTimeLeft()).toBe('2:06')
+    })
   })
 
-  test('returns the expected temperature', () => {
-    expect(battery.getTemperature()).toBe(30.7)
-  })
+  describe('when battery is fully charged', () => {
+    beforeEach(() => {
+      execa.sync.mockImplementation(() => require('../../__mocks__/macos-battery-fully-charged.js'))
 
-  test('returns the expected time left', () => {
-    expect(battery.getTimeLeft()).toBe('0:47')
+      const Battery = require('../../src/battery-macos.js')
+      battery = new Battery()
+    })
+
+    test('returns the expected cycles', () => {
+      expect(battery.getCycles()).toBe(55)
+    })
+
+    test('returns the expected capacity', () => {
+      expect(battery.getCapacity()).toBe(100)
+    })
+
+    test('returns the expected health', () => {
+      expect(battery.getHealth()).toBe(86)
+    })
+
+    test('returns the expected temperature', () => {
+      expect(battery.getTemperature()).toBe(29.8)
+    })
+
+    test('returns the expected time left', () => {
+      expect(battery.getTimeLeft()).toBe('∞')
+    })
   })
 })

@@ -33,9 +33,14 @@ module.exports = class Battery {
   }
 
   getTimeLeft () {
+    if (this.battery.ExternalConnected && this.battery.FullyCharged) {
+      return '∞'
+    }
+
     const time = this.battery.IsCharging ? this.battery.AvgTimeToFull : this.battery.AvgTimeToEmpty
     const hours = parseInt(time / 60, 10)
-    const minutes = parseInt(time % 60, 10)
+    let minutes = parseInt(time % 60, 10)
+    minutes = `${minutes < 10 ? 0 : ''}${minutes}`
 
     return util.format('%s:%s', hours, minutes)
   }
