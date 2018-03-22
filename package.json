@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "execa": "^0.10.0",
-    "plist": "^2.1.0"
+    "plist": "^3.0.1"
   },
   "jest": {
     "bail": true,
