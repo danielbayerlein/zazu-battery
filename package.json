@@ -7,8 +7,7 @@
   "scripts": {
     "lint": "standard --verbose | snazzy",
     "test": "npm run lint && npm run test:unit",
-    "test:unit": "jest",
-    "prepush": "npm test"
+    "test:unit": "jest"
   },
   "repository": {
     "type": "git",
@@ -25,7 +24,7 @@
   },
   "homepage": "https://github.com/danielbayerlein/zazu-battery#readme",
   "devDependencies": {
-    "husky": "^0.14.3",
+    "husky": "^1.0.1",
     "jest": "^23.6.0",
     "snazzy": "^8.0.0",
     "standard": "^12.0.1"
@@ -45,5 +44,10 @@
     "env": [
       "jest"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm test"
+    }
   }
 }
